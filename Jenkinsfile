@@ -19,14 +19,14 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
-                sh './jenkins/scripts/test.sh'
+                sh 'npm test -- --coverage --no-cache'
             }
         }
         stage('Deliver') {
             steps {
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                sh 'npm run build'
+                sh 'npm start & sleep 1'
+                sh 'echo $! > .pidfile'
             }
         }
     }
