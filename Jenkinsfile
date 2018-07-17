@@ -16,12 +16,12 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Test') {
-            steps {
-                sh 'chmod +x jenkins/scripts/test.sh'
-                sh 'jenkins/scripts/test.sh'
-            }
-        }
+        /*stage('Test') {
+            #steps {
+                #sh 'chmod +x jenkins/scripts/test.sh'
+                #sh 'jenkins/scripts/test.sh'
+            #}
+        }*/
         stage('Deliver') { 
             steps {
                 sh 'chmod +x jenkins/scripts/deliver.sh'
