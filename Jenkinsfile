@@ -5,12 +5,8 @@ pipeline {
     agent {
         docker {
             image 'node'
-            args '-u root -p 3000:3000'
+            args '-u root'
         }
-    }
-    
-    environment {
-        CI = 'true'
     }
 
     stages {
@@ -24,13 +20,6 @@ pipeline {
             steps {
                 echo 'Testing...'
                 sh 'npm test -- --coverage --no-cache'
-            }
-        }
-        stage('Deliver') {
-            steps {
-                sh 'npm run build'
-                sh 'npm start & sleep 1'
-                sh 'echo $! > .pidfile'
             }
         }
     }
