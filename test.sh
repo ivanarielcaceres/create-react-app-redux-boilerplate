@@ -1,1 +1,0 @@
-CI=true npm test -- --coverage --no-cache
