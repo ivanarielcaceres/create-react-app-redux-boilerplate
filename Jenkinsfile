@@ -14,6 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
+                sh 'node node_modules/puppeteer/install.js'
             }
         }
         stage('Test') {
