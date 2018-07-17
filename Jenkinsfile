@@ -22,5 +22,12 @@ pipeline {
                 sh 'npm test -- --coverage --no-cache'
             }
         }
+        
+        stage('Deliver') {
+            steps {
+                echo 'Deploying...'
+                sh 'npm start'
+            }
+        }
     }
 }
