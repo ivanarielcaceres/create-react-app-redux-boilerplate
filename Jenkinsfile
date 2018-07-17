@@ -5,7 +5,7 @@ pipeline {
     agent {
         docker {
             image 'node'
-            args '-u root'
+            args '-u root -p 3000:3000'
         }
     }
 
@@ -26,7 +26,7 @@ pipeline {
         stage('Deliver') {
             steps {
                 echo 'Deploying...'
-                sh 'npm start'
+                sh 'npm start & sleep 1'
             }
         }
     }
